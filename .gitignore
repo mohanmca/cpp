@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prerequisites
 *.d
 
@@ -30,3 +31,70 @@
 *.exe
 *.out
 *.app
+=======
+# Bazel build outputs
+bazel-*
+
+# User-specific files
+*.log
+*.lock
+*.swp
+*.swpx
+*.DS_Store
+
+# Compiled source files
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.class
+
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# Python virtual environments
+venv/
+__pycache__/
+
+# Coverage reports
+coverage/
+*.gcda
+*.gcno
+*.gcov
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+CTestTestfile.cmake
+
+# CLion project files
+cmake-build-debug/
+cmake-build-release/
+
+# JetBrains
+.idea/
+*.iml
+out/
+>>>>>>> master
