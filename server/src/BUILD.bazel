@@ -1,5 +1,58 @@
+load("@com_github_grpc_grpc//bazel:generate_cc.bzl", "cc_grpc_library")
+
+proto_library(
+    name = "my_service_proto",
+    srcs = ["my_service.proto"],
+    deps = ["@com_google_protobuf//:protobuf"],
+)
+
+cc_grpc_library(
+    name = "my_service_grpc",
+    srcs = ["my_service.proto"],
+    deps = [":my_service_proto"],
+)
+
+cc_binary(
+    name = "server",
+    srcs = ["server.cc"],
+    deps = [
+        ":my_service_grpc",
+        "@com_github_grpc_grpc//:grpc++",
+        "@com_google_protobuf//:protobuf",
+    ],
+)
+
 # src/BUILD
 cc_binary(
     name = "hello_world",
     srcs = ["main.cpp"],
+)
+
+
+cc_library(
+    name = "my_service_proto",
+    srcs = ["my_service.proto"],
+    deps = [
+        "@protobuf//:protobuf",
+        "@grpc//:grpc",
+    ],
+)
+
+grpc_cc_library(
+    name = "my_service_grpc",
+    srcs = ["my_service.proto"],
+    deps = [
+        ":my_service_proto",
+        "@grpc//:grpc",
+    ],
+)
+
+cc_binary(
+    name = "server",
+    srcs = ["server.cc"],
+    deps = [
+        ":my_service_grpc",
+        "@grpc//:grpc",
+        "@protobuf//:protobuf",
+    ],
 )

@@ -1,0 +1,29 @@
+load("@grpc//:build_defs.bzl", "grpc_cc_library")
+
+cc_library(
+    name = "my_service_proto",
+    srcs = ["my_service.proto"],
+    deps = [
+        "@protobuf//:protobuf",
+        "@grpc//:grpc",
+    ],
+)
+
+grpc_cc_library(
+    name = "my_service_grpc",
+    srcs = ["my_service.proto"],
+    deps = [
+        ":my_service_proto",
+        "@grpc//:grpc",
+    ],
+)
+
+cc_binary(
+    name = "client",
+    srcs = ["client.cc"],
+    deps = [
+        ":my_service_grpc",
+        "@grpc//:grpc",
+        "@protobuf//:protobuf",
+    ],
+)
